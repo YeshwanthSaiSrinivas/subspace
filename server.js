@@ -50,7 +50,7 @@ function storeAnalytics(){
 
 };
 
-let curlAnalytics = _.memoize(storeAnalytics, analyticResolver)
+const curlAnalytics = _.memoize(storeAnalytics, analyticResolver)
 
 app.get('/api/blog-stats', (req, res) => {
   curlAnalytics()
@@ -98,7 +98,7 @@ function curlSearch(query){
 
 }
 
-var curlsearchResult = _.memoize(curlSearch, searchResolver);
+const curlsearchResult = _.memoize(curlSearch, searchResolver);
 
 app.get('/api/blog-search', (req, res) => {
   const { query } = req.query;
@@ -135,7 +135,7 @@ function result(query){
  return promise;
 }
 
-var searchResult = _.memoize(result, args => args);
+const searchResult = _.memoize(result, args => args);
 
 app.get('/api/blog-search-axios', (req, res, next) => {
   const { query } = req.query;
